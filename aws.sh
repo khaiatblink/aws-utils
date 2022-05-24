@@ -1,0 +1,18 @@
+#!/bin/sh
+
+unset AWS_ACCESS_KEY_ID
+unset AWS_SECRET_ACCESS_KEY
+unset AWS_SESSION_TOKEN
+
+eval $(blink aws session dev)
+
+AWS_TOKEN_EXPORTS="/Users/<user.name>/.awstokens"
+test -f $AWS_TOKEN_EXPORTS || touch $AWS_TOKEN_EXPORTS
+
+truncate -s 0 $AWS_TOKEN_EXPORTS
+chmod +x $AWS_TOKEN_EXPORTS
+
+echo "#!/bin/sh\n" >> $AWS_TOKEN_EXPORTS
+echo "export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" >> $AWS_TOKEN_EXPORTS
+echo "export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" >> $AWS_TOKEN_EXPORTS
+echo "export AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN" >> $AWS_TOKEN_EXPORTS
