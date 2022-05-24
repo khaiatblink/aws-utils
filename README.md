@@ -14,5 +14,12 @@ brew install truncate
 # Optionally add an alias in your .zshrc/.bashrc file
 # alias awstokens='sh ~/path/to/aws.sh'
 
+# default to `dev` AWS profile
 awstokens
+
+# use `my-profile` AWS profile
+awstokens -p my-profile
+
+# reset AWS_* environment variables
+awstokens -r
 ```
