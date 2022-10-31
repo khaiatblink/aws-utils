@@ -17,14 +17,12 @@ done
 AWS_TOKEN_EXPORTS="/Users/$(whoami)/.awstokens"
 test -f $AWS_TOKEN_EXPORTS || touch $AWS_TOKEN_EXPORTS
 
-truncate -s 0 $AWS_TOKEN_EXPORTS
 chmod +x $AWS_TOKEN_EXPORTS
 
+echo "#!/bin/sh\n" > $AWS_TOKEN_EXPORTS
 if [[ "$reset" = true ]]; then
     exit
 fi
-
-echo "#!/bin/sh\n" >> $AWS_TOKEN_EXPORTS
 
 # Start an AWS session
 SESSION="$(blink aws session ${profile:="dev"})"
