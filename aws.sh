@@ -14,7 +14,7 @@ do
 done
 
 # Store AWS token exports
-AWS_TOKEN_EXPORTS="/Users/$(whoami)/.awstokens"
+AWS_TOKEN_EXPORTS="/Users/$(whoami)/.aws/tokens"
 test -f $AWS_TOKEN_EXPORTS || touch $AWS_TOKEN_EXPORTS
 
 chmod +x $AWS_TOKEN_EXPORTS
